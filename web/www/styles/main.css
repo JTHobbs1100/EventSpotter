@@ -1,0 +1,306 @@
+html {
+  height: 100%;
+  /* width: 100%; */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(81, 0, 160);
+  height: 100%;
+}
+
+/* Common Elements */
+
+h1.page-title {
+  background-color: rgb(58, 1, 114);
+  border-radius: 5pt;
+  border-style: solid;
+  border-color: rgb(58, 1, 114);
+  width: fit-content;
+  padding: 10pt;
+  color: white;
+  font-family: 'Arial Black';
+  font-size: xx-large
+}
+
+/* General Form Fields */
+
+.field-label-text {
+  color: white;
+  font-family: 'Arial', Helvetica, sans-serif;
+  font-size: 15pt;
+}
+
+.form-field-large {
+  background-color: rgb(58, 1, 114);
+  border-radius: 5pt;
+  border-style: solid;
+  border-color: rgb(58, 1, 114);
+  width: 25ch;
+  color: white;
+  font-size: 25px;
+  font-family: 'Arial', Helvetica, sans-serif;
+  margin-bottom: 10pt;
+}
+
+.form-field-para {
+  background-color: rgb(58, 1, 114);
+  border-radius: 5pt;
+  border-style: solid;
+  border-color: rgb(58, 1, 114);
+  width: 50ch;
+  height: 10ch;
+  color: white;
+  font-size: 20px;
+  font-family: 'Arial', Helvetica, sans-serif;
+  margin-bottom: 10pt;
+}
+
+.form-field-date,
+.form-field-time {
+  background-color: rgb(58, 1, 114);
+  border-radius: 5pt;
+  border-style: solid;
+  border-color: rgb(58, 1, 114);
+  width: fit-content;
+  color: white;
+  font-size: 20px;
+  font-family: 'Arial', Helvetica, sans-serif;
+  margin-bottom: 10pt;
+}
+
+.form-field-reg {
+  background-color: rgb(58, 1, 114);
+  border-radius: 5pt;
+  border-style: solid;
+  border-color: rgb(58, 1, 114);
+  width: 25ch;
+  color: white;
+  font-size: 20px;
+  font-family: 'Arial', Helvetica, sans-serif;
+  margin-bottom: 10pt;
+}
+
+input:focus-visible {
+  outline-color: darkgray;
+  outline-style: solid;
+}
+
+.field-submit-btn {
+  background-color: rgb(58, 1, 114);
+  border-radius: 5pt;
+  border-style: solid;
+  border-color: darkgray;
+  border-width: 2pt;
+  width: fit-content;
+  padding: 5pt;
+  color: white;
+  font-family: 'Arial Black';
+  font-size: 20px;
+  margin-top: 10pt
+}
+
+/* Nav */
+
+.navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-nav {
+  align-items: center;
+}
+
+.nav-link,
+.nav-item,
+.navbar-brand {
+  font-family: 'Arial Black', Helvetica, sans-serif;
+  color: white;
+}
+
+.navbar-brand {
+  font-size: xx-large;
+}
+
+.navbar-brand:hover {
+  color: white;
+}
+
+.navbar-nav .nav-link.active {
+  border: 2pt solid white;
+  border-radius: 5pt;
+  color: white;
+}
+
+.nav-link:hover {
+  color: darkgray;
+}
+
+.navbar-custom {
+  background-color: rgb(58, 1, 114);
+  margin-bottom: 20px;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler {
+  border-color: white
+}
+
+/* Home Page */
+
+.front-page {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+.headline {
+  color: white;
+  flex-basis: auto;
+  width: 45%;
+  margin: 20pt;
+  padding-top: 40pt
+}
+
+h1.pretty {
+  font-family: 'Brush Script MT'
+}
+
+h1.splash {
+  white-space: pre-line;
+  font-size: 100pt;
+  font-family: 'Arial Black', Helvetica, sans-serif;
+  font-weight: 500;
+  line-height: .85;
+  letter-spacing: -2pt;
+}
+
+p.slogan {
+  font-size: 18pt;
+  color: darkgray;
+  padding-top: 20pt;
+}
+
+.featured-events {
+  flex-basis: auto;
+  width: 45%;
+  margin: 20pt;
+}
+
+.featured-events-list {
+  background-color: rgb(58, 1, 114);
+  border-radius: 5pt;
+  border-style: solid;
+  border-color: rgb(58, 1, 114);
+  margin-top: 20pt;
+}
+
+.event {
+  color: white;
+  padding: 20px;
+  border-bottom: 10px;
+  width: auto;
+}
+
+.event h2 {
+  font-family: 'Arial Black';
+  display: inline;
+}
+
+.event p.location {
+  display: inline;
+  color: darkgray;
+}
+
+.event p.description {
+  color: darkgray;
+}
+
+/* Login */
+
+.login-field {
+  background-color: rgb(58, 1, 114);
+  border-radius: 5pt;
+  border-style: solid;
+  border-color: rgb(58, 1, 114);
+  width: 25ch;
+  color: white;
+  font-size: 20px;
+  font-family: 'Arial', Helvetica, sans-serif;
+  margin-bottom: 10pt;
+}
+
+.login-field:focus-visible {
+  outline-color: darkgray;
+  outline-style: solid;
+}
+
+/* Basic Page Template */
+
+.basic-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.basic-container {
+  padding-top: 5%;
+}
+
+/* All Events Page */
+
+.events-container {
+  width: 75%;
+}
+
+.event-item {
+  background-color: rgb(58, 1, 114);
+  border-radius: 5pt;
+  border-style: solid;
+  border-color: rgb(58, 1, 114);
+  margin-bottom: 10pt
+}
+
+a {
+  color: white;
+}
+
+/* Event Details */
+
+.event-details-page-container {
+  width: 50%;
+}
+
+.event-details-container {
+  background-color: rgb(58, 1, 114);
+  border-radius: 5pt;
+  border-style: solid;
+  border-color: rgb(58, 1, 114);
+}
+
+.event-details {
+  color: white;
+  padding: 20px;
+  width: auto;
+}
+
+.event-details h2 {
+  font-family: 'Arial Black';
+  font-size: 20pt;
+}
+
+.event-details p.description {
+  color: darkgray;
+}
