@@ -26,11 +26,23 @@ class EventSpotterController {
             $command = $this->input["command"];
 
         switch($command) {
+            case "homepage":
+                $this->showHomePage();
+                break;
             case "events":
                 $this->showEvents();
                 break;
+            case "eventdetails":
+                $this->showEventDetails();
+                break;
+            case "create":
+                $this->showCreate();
+                break;   
+            case "login":
+                $this->showLogin();
+                break;
             default:
-                $this->showHome();
+                $this->showHomePage();
                 break;
         }
     }
@@ -38,13 +50,24 @@ class EventSpotterController {
     /**
      * Show the example page to the user.
      */
-    public function showHome() {
+    public function showHomePage() {
         $dataElement = print_r($this->input, true);
         include("/opt/src/templates/homepage.php");
     }
-
     public function showEvents() {
         $dataElement = print_r($this->input, true);
         include("/opt/src/templates/events.php");
+    }
+    public function showEventDetails() {
+        $dataElement = print_r($this->input, true);
+        include("/opt/src/templates/event-details.php");
+    }
+    public function showCreate() {
+        $dataElement = print_r($this->input, true);
+        include("/opt/src/templates/create.php");
+    }
+    public function showLogin() {
+        $dataElement = print_r($this->input, true);
+        include("/opt/src/templates/login.php");
     }
 }

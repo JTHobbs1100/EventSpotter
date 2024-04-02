@@ -51,7 +51,7 @@ https://getbootstrap.com/docs/4.0/components/navbar/
         <!-- navbar -->
         <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">Event Spotter</a>
+                <a class="navbar-brand" href="?command=homepage">Event Spotter</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -60,8 +60,8 @@ https://getbootstrap.com/docs/4.0/components/navbar/
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" href="?command=homepage">home</a></li>
                         <li class="nav-item"><a class="nav-link" href="?command=events">events</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="create.html">create an event</a></li>
-                        <li class="nav-item"><a class="nav-link" href="login.html">login</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="?command=create">create an event</a></li>
+                        <li class="nav-item"><a class="nav-link" href="?command=login">login</a></li>
                     </ul>
                 </div>
             </div>
@@ -84,15 +84,15 @@ https://getbootstrap.com/docs/4.0/components/navbar/
             <div class="featured-events-list">
                 <div class="event">
                     <h2>Event #1</h2>
-                    <p>Event Description <a href="event-details.html">see more...</a></p>
+                    <p>Event Description <a href="?command=eventdetails">see more...</a></p>
                 </div>
                 <div class="event">
                     <h2>Event #2</h2>
-                    <p>Event Description <a href="event-details.html">see more...</a></p>
+                    <p>Event Description <a href="?command=eventdetails">see more...</a></p>
                 </div>
                 <div class="event">
                     <h2>Event #2</h2>
-                    <p>Event Description <a href="event-details.html">see more...</a></p>
+                    <p>Event Description <a href="?command=eventdetails">see more...</a></p>
                 </div>
             </div>
         </div>
