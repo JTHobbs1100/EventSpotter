@@ -50,8 +50,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" href="?command=homepage">home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="?command=events">events</a></li>
+                        <li class="nav-item"><a class="nav-link" href="?command=homepage">home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="?command=events">events</a></li>
                         <li class="nav-item"> <a class="nav-link" href="?command=create">create an event</a></li>
                         <li class="nav-item"><a class="nav-link" href="?command=login">login</a></li>
                     </ul>
@@ -69,7 +69,7 @@
           <h2>Event #1</h2>
           <p class="location">@ 123 Apple Street, Charlottesville VA</p>
           <p class="description">February 29th from 8-10pm</p>
-          <p class="description">Event Description <a href="event-details.html">see more...</a></p>
+          <p class="description">Event Description <a href="?command=eventdetails">see more...</a></p>
         </div>
       </div>
       <div class="event-item">
@@ -77,7 +77,7 @@
           <h2>Event #2</h2>
           <p class="location">@ 123 Apple Street, Charlottesville VA</p>
           <p class="description">February 29th from 8-10pm</p>
-          <p class="description">Event Description <a href="event-details.html">see more...</a></p>
+          <p class="description">Event Description <a href="?command=eventdetails">see more...</a></p>
         </div>
       </div>
       <div class="event-item">
@@ -85,7 +85,7 @@
           <h2>Event #3</h2>
           <p class="location">@ 123 Apple Street, Charlottesville VA</p>
           <p class="description">February 29th from 8-10pm</p>
-          <p class="description">Event Description <a href="event-details.html">see more...</a></p>
+          <p class="description">Event Description <a href="?command=eventdetails">see more...</a></p>
         </div>
       </div>
     </div>

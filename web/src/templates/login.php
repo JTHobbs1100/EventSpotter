@@ -49,10 +49,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" href="?command=homepage">home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="?command=homepage">home</a></li>
                         <li class="nav-item"><a class="nav-link" href="?command=events">events</a></li>
                         <li class="nav-item"> <a class="nav-link" href="?command=create">create an event</a></li>
-                        <li class="nav-item"><a class="nav-link" href="?command=login">login</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="?command=login">login</a></li>
                     </ul>
                 </div>
             </div>
