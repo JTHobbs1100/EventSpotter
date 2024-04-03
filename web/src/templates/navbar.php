@@ -19,11 +19,15 @@
                 if(isset($_SESSION["login_status"]) && $_SESSION["login_status"] == true){
                     ?> 
                     
+                    <!-- we should move the hello away from the navbar -->
+                    <li class="nav-item">Hello,
+                        <?=$_SESSION["username"]?>!  </li>
 
                     <li class="nav-item"><a
                         class="nav-link"
-                        href="?command=myevents">Hello,
-                        <?=$_SESSION["username"]?>! my events </a></li>
+                        href="?command=myevents"> my events </a></li>
+
+                    
 
                     <li class="nav-item"><a
                         class="nav-link <?php if($_SESSION["activePage"] == "login") echo "active"?>"
