@@ -30,6 +30,10 @@ class EventSpotterController {
             $command = $this->input["command"];
 
         switch($command) {
+            case "myevents":
+                $this->showMyEvents();
+                //echo $_SESSION["username"];
+                break;
             case "submit_event":
                 $this->submitEvent();
                 //echo $_SESSION["username"];
@@ -234,5 +238,14 @@ class EventSpotterController {
         session_start();
 
         header("Location: ?command=homepage");
+    }
+
+    public function showMyEvents(){
+        
+        $res = $this->db->query("select * from events where username = $1;", $_SESSION["username"]);
+        $_SESSION["activePage"] = "myevents";
+        $_SESSION["myevents"] = $res;
+        include("/opt/src/templates/myevents.php");
+        print_r($res);
     }
 }
