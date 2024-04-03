@@ -11,7 +11,7 @@ class EventSpotterController {
         $this->db = new Database();
         $this->input = $input;
         session_start();
-        $_SESSION["login_status"]=false;
+        // $_SESSION["login_status"]=false;
     }
 
     /**
@@ -60,9 +60,11 @@ class EventSpotterController {
                 //echo $_SESSION["username"];
                 break;
             case "successful_login":
-                $_SESSION["login_status"]=true;
+               // $_SESSION["login_status"]=true;
                 $this->showSuccessLogin();
-                
+                break;
+            case "logout":
+                $this->logout();
                 break;
             default:
                 $this->showHomePage();
@@ -118,12 +120,14 @@ class EventSpotterController {
                     // to check that the passwords match.
                     if (password_verify($_POST["password"], $res[0]["password"])) {
                         // Password was correct, save their information to the
-                        // session and send them to the question page
+                        // session and send them to homepage?
                         $_SESSION["login_status"]=true;
-                        header("Location: ?command=successful_login");
+                        
                         $_SESSION["username"] = $res[0]["username"];
                         echo "User found.";
                         echo $res[0]["username"];
+
+                        header("Location: ?command=successful_login");
                         
                         
                         return;
@@ -190,5 +194,13 @@ class EventSpotterController {
                 return;
         } 
     }
+    
+    public function logout(){
+        if(isset($_SESSION["login_status"])){
+            $_SESSION["login_status"] = false;
+            unset($_SESSION["username"]);
+        }
 
+        header("Location: ?command=homepage");
+    }
 }

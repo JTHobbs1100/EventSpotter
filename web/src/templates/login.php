@@ -39,24 +39,7 @@
 
 <body>
     <header>
-      <!-- navbar -->
-      <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="?command=homepage">Event Spotter</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="?command=homepage">home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="?command=events">events</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="?command=create">create an event</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="?command=login">login</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <?php include("/opt/src/templates/navbar.php"); ?>
     </header>
 
     <div class="basic-page">
@@ -66,11 +49,12 @@
                 <h2 class="field-label-text">username:</h2>
                 <input type="text" class="login-field" name="username" id="user" aria-label="Username" required> <br>
                 <h2 class="field-label-text">password:</h2>
-                <input type="password" class="login-field" name="password" id="pass" aria-label="Password" required> <br>
+                <input type="password" class="login-field" name="password" id="pass" aria-label="Password" required>
+                <br>
                 <!-- add if statement for session to see if logged in so we can make it a log out button instead -->
                 <button class=" field-submit-btn" type="submit">log in</button>
 
-                
+
             </form>
             <a href="?command=create_account_page"><button class="field-submit-btn">create account</button> </a>
         </div>
