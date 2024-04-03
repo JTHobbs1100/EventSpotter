@@ -174,16 +174,23 @@ class EventSpotterController {
             isset($_POST["password"]) && !empty($_POST["password"])) {
                 $res = $this->db->query("select * from login where username = $1;", $_POST["username"]);
                 if (empty($res)) {
-                    // User was not in the database, so we can create an account
-                    // Hash the password
-                    $hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
-                    // Insert the user into the database
-                    $this->db->query("insert into login (username, password) values ($1, $2);", $_POST["username"], $hash);
-                    // Save their information to the session and send them to the question page
-                    $_SESSION["login_status"] = true;
-                    $_SESSION["username"] = $_POST["username"];
-                    $this->showHomePage();
-                    
+                    if(!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,16}$/", $_POST["password"])){
+                        $accountCreationMessage = "<div class=\"alert alert-danger\" role=\"alert\" style=\"display: inline-block;\">
+                    Password must be 6-16 characters and contain an upper case letter, an upper case letter, and a number!
+                </div>";
+
+                    $this->showCreateAccountPage($accountCreationMessage);
+                    }else{
+                        // User was not in the database, so we can create an account
+                        // Hash the password
+                        $hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+                        // Insert the user into the database
+                        $this->db->query("insert into login (username, password) values ($1, $2);", $_POST["username"], $hash);
+                        // Save their information to the session and send them to the question page
+                        $_SESSION["login_status"] = true;
+                        $_SESSION["username"] = $_POST["username"];
+                        $this->showHomePage();
+                    }
                 } else {
                     // User was in the database, so we cannot create an account
                     //echo "User already exists.";

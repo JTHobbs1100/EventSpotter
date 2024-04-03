@@ -1,7 +1,8 @@
 <?php
 /**
- * Example full-stack application
- * CS4640 Spring 2024
+ * HOSTED AT: https://cs4640.cs.virginia.edu/fdu5ff/EventSpotter/ -->
+ * SOURCES: https://getbootstrap.com/docs/4.0/components/navbar/,
+ *  https://stackoverflow.com/questions/12090077/javascript-regular-expression-password-validation-having-special-characters
  */
 
 // Show all errors (for development)
