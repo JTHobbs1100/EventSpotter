@@ -70,7 +70,6 @@ class EventSpotterController {
                 break;   
                 }
                 else{
-                  
                     header("Location: ?command=login");
                     break;
                 }
@@ -107,10 +106,15 @@ class EventSpotterController {
         $_SESSION["featuredEvents"] = array_slice($_SESSION["featuredEvents"], 0, 3); //top 3 events by date/time
         include("/opt/src/templates/homepage.php");
     }
+    // function that returns JSON data
+    public function getEventsJSON(){
+        $res = $this->db->query("select * from events");
+        $jsonEvents = json_encode($res);
+        return $jsonEvents;
+    }
     public function showEvents() {
         $dataElement = print_r($this->input, true);
-        $res = $this->db->query("select * from events");
-        $_SESSION["allEvents"] = $res;
+        $_SESSION["allEvents"] = json_decode($this->getEventsJSON(), true);
         $_SESSION["allEvents"] = $this->sortEvents($_SESSION["allEvents"]);
         include("/opt/src/templates/events.php");
     }
