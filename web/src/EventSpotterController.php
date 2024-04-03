@@ -31,6 +31,7 @@ class EventSpotterController {
 
         switch($command) {
             case "myevents":
+                $_SESSION["activePage"] = "myevents";
                 $this->showMyEvents();
                 //echo $_SESSION["username"];
                 break;
@@ -241,11 +242,17 @@ class EventSpotterController {
     }
 
     public function showMyEvents(){
-        
         $res = $this->db->query("select * from events where username = $1;", $_SESSION["username"]);
-        $_SESSION["activePage"] = "myevents";
         $_SESSION["myevents"] = $res;
+        $_SESSION["myevents"] = $this->sortEvents($_SESSION["myevents"]);
         include("/opt/src/templates/myevents.php");
-        print_r($res);
+    }
+
+    public function sortEvents($eventArr){
+        
+        array_multisort(array_column($eventArr, 'event_date'), SORT_ASC, array_column($eventArr, 'start_time'), SORT_ASC, array_column($eventArr, 'end_time'), SORT_ASC,  $eventArr);
+        
+        return $eventArr;
+        
     }
 }

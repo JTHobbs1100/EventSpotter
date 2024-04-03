@@ -44,8 +44,22 @@
     </header>
 
     <div class="basic-page">
-       hello there
-      <?php print_r($_SESSION["myevents"]); ?>;
+        <div class="basic-container events-container">
+            <h1 class="page-title">My Events</h1> <br>
+            <?php foreach($_SESSION["myevents"] as $event){ ?>
+            <div class="event-item">
+                <div class="event">
+                    <h2><?= $event["event_name"]?></h2>
+                    <p class="location">@ <?= $event["event_location"]?> </p>
+                    <p class="description"><?= $event["event_date"]?> from <?= $event["start_time"]?> to
+                        <?= $event["end_time"]?></p>
+                    <p class="description"><?= $event["event_description"]?>
+                        <!-- <a href="?command=eventdetails">see more...</a> -->
+                    </p>
+                </div>
+            </div>
+            <?php }?>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
