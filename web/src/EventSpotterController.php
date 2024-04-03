@@ -162,13 +162,14 @@ class EventSpotterController {
        // $this->showHomePage();
     }
 
-    public function showCreateAccountPage() {
+    public function showCreateAccountPage($accountCreationMessage = "") {
         $dataElement = print_r($this->input, true);
-        include("/opt/src/templates/create_account.php");
+        include("/opt/src/templates/create-account.php");
     }
 
     public function createAccount(){
         // User must provide a non-empty name, email, and password to create an account
+        $accountCreationMessage = "";
         if(isset($_POST["username"]) && !empty($_POST["username"]) &&
             isset($_POST["password"]) && !empty($_POST["password"])) {
                 $res = $this->db->query("select * from login where username = $1;", $_POST["username"]);
@@ -179,14 +180,19 @@ class EventSpotterController {
                     // Insert the user into the database
                     $this->db->query("insert into login (username, password) values ($1, $2);", $_POST["username"], $hash);
                     // Save their information to the session and send them to the question page
+                    $_SESSION["login_status"] = true;
                     $_SESSION["username"] = $_POST["username"];
-                    header("Location: ?command=successful_login");
-                    return;
+                    $this->showHomePage();
+                    
                 } else {
                     // User was in the database, so we cannot create an account
                     //echo "User already exists.";
-                    $this->errorMessage = "User already exists.";
-                    echo $this->errorMessage;
+                    $accountCreationMessage = "<div class=\"alert alert-danger\" role=\"alert\" style=\"display: inline-block;\">
+                    Username already exists!
+                </div>";
+
+                    $this->showCreateAccountPage($accountCreationMessage);
+
                 }
         } 
        
