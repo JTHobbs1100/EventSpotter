@@ -65,7 +65,8 @@ class EventSpotterController {
                 break;   
                 }
                 else{
-                    $this->showLogin();
+                  
+                    header("Location: ?command=login");
                     break;
                 }
             case "login":
