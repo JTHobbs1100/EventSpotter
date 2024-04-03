@@ -58,6 +58,12 @@
             </form>
             <a href="?command=create_account_page"><button class="field-submit-btn">create account</button> </a>
         </div>
+        <br>
+        <div class="row">
+            <div class="col-xs-12" style="text-align:center;">
+                <?= $loginMessage ?>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

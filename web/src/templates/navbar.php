@@ -8,15 +8,22 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="?command=homepage">home</a></li>
-                <li class="nav-item"><a class="nav-link" href="?command=events">events</a></li>
-                <li class="nav-item"> <a class="nav-link" href="?command=create">create an event</a></li>
+                <li class="nav-item"><a class="nav-link <?php if($_SESSION["activePage"] == "homepage") echo "active"?>"
+                        href="?command=homepage">home</a></li>
+                <li class="nav-item"><a class="nav-link <?php if($_SESSION["activePage"] == "events") echo "active"?>"
+                        href="?command=events">events</a></li>
+                <li class="nav-item"> <a class="nav-link <?php if($_SESSION["activePage"] == "create") echo "active"?>"
+                        href="?command=create">create an event</a></li>
                 <?php
                 if($_SESSION["login_status"]){
-                    ?> <li class="nav-item"><a class="nav-link active" href="?command=logout">Hello,
+                    ?> <li class="nav-item"><a
+                        class="nav-link <?php if($_SESSION["activePage"] == "login") echo "active"?>"
+                        href="?command=logout">Hello,
                         <?=$_SESSION["username"]?>! <span style="color: grey"> Logout? </span></a></li> <?php
                 }else{
-                    ?> <li class="nav-item"><a class="nav-link active" href="?command=login">login</a></li> <?php
+                    ?> <li class="nav-item"><a
+                        class="nav-link <?php if($_SESSION["activePage"] == "login") echo "active"?>"
+                        href="?command=login">log in</a></li> <?php
                 }
                 
                 ?>

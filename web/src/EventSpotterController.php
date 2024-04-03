@@ -10,6 +10,7 @@ class EventSpotterController {
     public function __construct($input) {
         $this->db = new Database();
         $this->input = $input;
+        // echo print_r($input);
         session_start();
         // $_SESSION["login_status"]=false;
     }
@@ -41,18 +42,22 @@ class EventSpotterController {
                 //echo $_SESSION["username"];
                 break;
             case "homepage":
+                $_SESSION["activePage"] = "homepage";
                 $this->showHomePage();
                 break;
             case "events":
+                $_SESSION["activePage"] = "events";
                 $this->showEvents();
                 break;
             case "eventdetails":
                 $this->showEventDetails();
                 break;
             case "create":
+                $_SESSION["activePage"] = "create";
                 $this->showCreate();
                 break;   
             case "login":
+                $_SESSION["activePage"] = "login";
                 $this->showLogin();
                 break;
             case "authentication":
@@ -91,7 +96,7 @@ class EventSpotterController {
         $dataElement = print_r($this->input, true);
         include("/opt/src/templates/create.php");
     }
-    public function showLogin() {
+    public function showLogin($loginMessage = "") {
         $dataElement = print_r($this->input, true);
         include("/opt/src/templates/login.php");
     }
@@ -103,16 +108,24 @@ class EventSpotterController {
 
     public function loginDatabase() {
         // User must provide a non-empty name, email, and password to attempt a login
+
+        $loginMessage = "";
+        
         if(isset($_POST["username"]) && !empty($_POST["username"]) &&
             isset($_POST["password"]) && !empty($_POST["password"])) {
-
+                
                 // Check if user is in database, by email
                 $res = $this->db->query("select * from login where username = $1;", $_POST["username"]);
-                if (empty($res)) {
-                    echo "User not found.";
-                   // header("Location: ?command=successful_login");
 
-                    return;
+                // echo print_r($res);
+                
+                if (empty($res)) {
+                    //$_SESSION["loginMessage"]
+                    $loginMessage = "<div class=\"alert alert-danger\" role=\"alert\" style=\"display: inline-block;\">
+                        User does not exist! New to Event Spotter? Create an account!
+                    </div>";
+
+                    $this->showLogin($loginMessage);
                    
                 } else {
                     // User was in the database, verify password is correct
@@ -124,16 +137,18 @@ class EventSpotterController {
                         $_SESSION["login_status"]=true;
                         
                         $_SESSION["username"] = $res[0]["username"];
-                        echo "User found.";
-                        echo $res[0]["username"];
+                        // echo "User found.";
+                        // echo $res[0]["username"];
 
-                        header("Location: ?command=successful_login");
-                        
+                        $this->showHomePage();
                         
                         return;
                     } else {
-                        header("Location: ?command=login");
-                        echo "wrong password.";
+                        $loginMessage = "<div class=\"alert alert-danger\" role=\"alert\" style=\"display: inline-block;\">
+                        Incorrect username or password!
+                    </div>";
+
+                    $this->showLogin($loginMessage);
                      
                     }
                 }
