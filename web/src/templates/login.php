@@ -62,11 +62,11 @@
     <div class="basic-page">
         <div class="basic-container">
             <h1 class="page-title">log in</h1> <br>
-            <form class="login-form">
+            <form class="login-form" action="?command=authentication" method="post">
                 <h2 class="field-label-text">username:</h2>
-                <input type="text" class="login-field" id="user" aria-label="Username"> <br>
+                <input type="text" class="login-field" name="username" id="user" aria-label="Username" require> <br>
                 <h2 class="field-label-text">password:</h2>
-                <input type="password" class="login-field" id="pass" aria-label="Password"> <br>
+                <input type="password" class="login-field" name="password" id="pass" aria-label="Password" require> <br>
                 <button class=" field-submit-btn" type="submit">log in</button>
             </form>
         </div>

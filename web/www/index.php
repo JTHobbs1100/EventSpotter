@@ -18,5 +18,4 @@ spl_autoload_register(function ($classname) {
 
 // Instantiate the controller and pass in the URL (HTTP GET) parameters
 $controller = new EventSpotterController($_GET); // rename
-
 $controller->run();
