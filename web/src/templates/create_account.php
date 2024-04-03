@@ -52,14 +52,29 @@
                         <li class="nav-item"><a class="nav-link" href="?command=homepage">home</a></li>
                         <li class="nav-item"><a class="nav-link" href="?command=events">events</a></li>
                         <li class="nav-item"> <a class="nav-link" href="?command=create">create an event</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="?command=login">login</a></li>
+                        <li class="nav-item"><a class="nav-link " href="?command=login">login</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <h1 style='color: white;'>You have logged in successfully.</h1>
+    <div class="basic-page">
+        <div class="basic-container">
+            <h1 class="page-title">create account</h1> <br>
+            <form class="login-form" action="?command=create_account" method="post">
+                <h2 class="field-label-text">username:</h2>
+                <input type="text" class="login-field" name="username" id="user" aria-label="Username" required> <br>
+                <h2 class="field-label-text">password:</h2>
+                <input type="password" class="login-field" name="password" id="pass" aria-label="Password" required> <br>
+                <!-- add if statement for session to see if logged in so we can make it a log out button instead -->
+                <button class=" field-submit-btn" type="submit">create account</button>
+
+                
+            </form>
+            <a href="?command=login"><button class="field-submit-btn">log in</button> </a>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">

@@ -64,11 +64,15 @@
             <h1 class="page-title">log in</h1> <br>
             <form class="login-form" action="?command=authentication" method="post">
                 <h2 class="field-label-text">username:</h2>
-                <input type="text" class="login-field" name="username" id="user" aria-label="Username" require> <br>
+                <input type="text" class="login-field" name="username" id="user" aria-label="Username" required> <br>
                 <h2 class="field-label-text">password:</h2>
-                <input type="password" class="login-field" name="password" id="pass" aria-label="Password" require> <br>
+                <input type="password" class="login-field" name="password" id="pass" aria-label="Password" required> <br>
+                <!-- add if statement for session to see if logged in so we can make it a log out button instead -->
                 <button class=" field-submit-btn" type="submit">log in</button>
+
+                
             </form>
+            <a href="?command=create_account_page"><button class="field-submit-btn">create account</button> </a>
         </div>
     </div>
 

@@ -27,6 +27,14 @@ class EventSpotterController {
             $command = $this->input["command"];
 
         switch($command) {
+            case "create_account":
+                $this->createAccount();
+                //echo $_SESSION["username"];
+                break;
+            case "create_account_page":
+                $this->showCreateAccountPage();
+                //echo $_SESSION["username"];
+                break;
             case "homepage":
                 $this->showHomePage();
                 break;
@@ -105,30 +113,57 @@ class EventSpotterController {
                     if (password_verify($_POST["password"], $res[0]["password"])) {
                         // Password was correct, save their information to the
                         // session and send them to the question page
+                        header("Location: ?command=successful_login");
                         $_SESSION["username"] = $res[0]["username"];
                         echo "User found.";
                         echo $res[0]["username"];
-                        //header("Location: ?command=successful_login");
+                        
                         
                         return;
                     } else {
-                        // Password was incorrect
-                       // $this->errorMessage = "Incorrect password.";
-                        echo $res[0]["password"];
+                        header("Location: ?command=login");
                         echo "wrong password.";
-                        echo $_SESSION["username"];
-                        print_r($res);
-                        //header("Location: ?command=successful_login");
-                        //print_r($res);
+                     
                     }
                 }
-        } else {
-            //echo "Name and password are required.";
-            $this->errorMessage = "Name and password are required.";
-            echo $this->errorMessage;
-        }
+        } 
+        // else {
+        //     //echo "Name and password are required.";
+        //     $this->errorMessage = "Name and password are required.";
+        //     echo $this->errorMessage;
+        // }
         // If something went wrong, show the welcome page again
        // $this->showHomePage();
+    }
+
+    public function showCreateAccountPage() {
+        $dataElement = print_r($this->input, true);
+        include("/opt/src/templates/create_account.php");
+    }
+
+    public function createAccount(){
+        // User must provide a non-empty name, email, and password to create an account
+        if(isset($_POST["username"]) && !empty($_POST["username"]) &&
+            isset($_POST["password"]) && !empty($_POST["password"])) {
+                $res = $this->db->query("select * from login where username = $1;", $_POST["username"]);
+                if (empty($res)) {
+                    // User was not in the database, so we can create an account
+                    // Hash the password
+                    $hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+                    // Insert the user into the database
+                    $this->db->query("insert into login (username, password) values ($1, $2);", $_POST["username"], $hash);
+                    // Save their information to the session and send them to the question page
+                    $_SESSION["username"] = $_POST["username"];
+                    header("Location: ?command=successful_login");
+                    return;
+                } else {
+                    // User was in the database, so we cannot create an account
+                    //echo "User already exists.";
+                    $this->errorMessage = "User already exists.";
+                    echo $this->errorMessage;
+                }
+        } 
+       
     }
 
 }
