@@ -59,9 +59,15 @@ class EventSpotterController {
                 $this->showEventDetails();
                 break;
             case "create":
+                if(isset($_SESSION["login_status"]) && $_SESSION["login_status"] == true){
                 $_SESSION["activePage"] = "create";
                 $this->showCreate();
                 break;   
+                }
+                else{
+                    $this->showLogin();
+                    break;
+                }
             case "login":
                 $_SESSION["activePage"] = "login";
                 $this->showLogin();
