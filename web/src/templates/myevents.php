@@ -56,9 +56,14 @@
                     <p class="description"><?= $event["event_description"]?>
                         <!-- <a href="?command=eventdetails">see more...</a> -->
                     </p>
+                    <form action="?command=delete_event" method="POST">
+                        <input type="hidden" name="event_id" value="<?= $event["event_id"] ?>">
+                        <button type="submit" name="delete_event">Delete Event</button>
+                </form>
                 </div>
             </div>
-            <?php }?>
+            <?php } //print_r($_SESSION["myevents"])
+            ?>
         </div>
     </div>
 

@@ -30,6 +30,11 @@ class EventSpotterController {
             $command = $this->input["command"];
 
         switch($command) {
+            case "delete_event":
+                //$_SESSION["activePage"] = "myevents";
+                $this->delete_event();
+                //echo $_SESSION["username"];
+                break;
             case "myevents":
                 $_SESSION["activePage"] = "myevents";
                 $this->showMyEvents();
@@ -268,5 +273,11 @@ class EventSpotterController {
         
         return $eventArr;
         
+    }
+    public function delete_event(){
+        if(isset($_POST["event_id"]) && !empty($_POST["event_id"]) ){
+            $this->db->query("delete from events where event_id = $1;", $_POST["event_id"]);
+        }
+        header("Location: ?command=myevents");
     }
 }
