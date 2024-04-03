@@ -62,6 +62,7 @@ https://getbootstrap.com/docs/4.0/components/navbar/
                         <li class="nav-item"><a class="nav-link" href="?command=events">events</a></li>
                         <li class="nav-item"> <a class="nav-link" href="?command=create">create an event</a></li>
                         <li class="nav-item"><a class="nav-link" href="?command=login">login</a></li>
+                        
                     </ul>
                 </div>
             </div>

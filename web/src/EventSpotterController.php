@@ -11,6 +11,7 @@ class EventSpotterController {
         $this->db = new Database();
         $this->input = $input;
         session_start();
+        $_SESSION["login_status"]=false;
     }
 
     /**
@@ -27,6 +28,10 @@ class EventSpotterController {
             $command = $this->input["command"];
 
         switch($command) {
+            case "submit_event":
+                $this->submitEvent();
+                //echo $_SESSION["username"];
+                break;
             case "create_account":
                 $this->createAccount();
                 //echo $_SESSION["username"];
@@ -55,8 +60,9 @@ class EventSpotterController {
                 //echo $_SESSION["username"];
                 break;
             case "successful_login":
+                $_SESSION["login_status"]=true;
                 $this->showSuccessLogin();
-                //echo $_SESSION["username"];
+                
                 break;
             default:
                 $this->showHomePage();
@@ -113,6 +119,7 @@ class EventSpotterController {
                     if (password_verify($_POST["password"], $res[0]["password"])) {
                         // Password was correct, save their information to the
                         // session and send them to the question page
+                        $_SESSION["login_status"]=true;
                         header("Location: ?command=successful_login");
                         $_SESSION["username"] = $res[0]["username"];
                         echo "User found.";
@@ -164,6 +171,24 @@ class EventSpotterController {
                 }
         } 
        
+    }
+
+    public function submitEvent(){
+        // User must provide a non-empty name, email, and password to create an account
+        if(isset($_POST["event_name"]) && !empty($_POST["event_name"]) &&
+            isset($_POST["event_description"]) && !empty($_POST["event_description"]) &&
+            isset($_POST["event_date"]) && !empty($_POST["event_date"]) &&
+            isset($_POST["start_time"]) && !empty($_POST["start_time"]) &&
+            isset($_POST["end_time"]) && !empty($_POST["end_time"]) &&
+            isset($_POST["event_location"]) && !empty($_POST["event_location"]) && isset($_SESSION["username"])) {
+                
+                // Insert the user into the database
+                $this->db->query("insert into events (event_name, event_description, event_date, start_time, end_time, event_location,username) values ($1, $2, $3, $4, $5, $6, $7);", 
+                        $_POST["event_name"], $_POST["event_description"], $_POST["event_date"], $_POST["start_time"], $_POST["end_time"], $_POST["event_location"], $_SESSION["username"]);
+               
+                header("Location: ?command=events");
+                return;
+        } 
     }
 
 }

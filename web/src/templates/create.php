@@ -60,19 +60,19 @@
   <div class="basic-page">
     <div class="basic-container">
       <h1 class="page-title">Create an Event</h1> <br>
-      <form class="form">
+      <form class="form" action="?command=submit_event" method="post">
         <h2 class="field-label-text">Event Name:</h2>
-        <input type="text" class="form-field-large" id="eventName" aria-label="Event Name"> <br>
+        <input type="text" class="form-field-large" name="event_name" id="eventName" aria-label="Event Name" required> <br>
         <h2 class="field-label-text">Event Description:</h2>
-        <textarea class="form-field-para" id="eventDescription" aria-label="Event Description"> </textarea>
+        <textarea class="form-field-para" name ="event_description" id="eventDescription" aria-label="Event Description" required> </textarea>
         <h2 class="field-label-text">Event Date:</h2>
-        <input type="date" class="form-field-date" id="eventDate" aria-label="Event Date"><br>
+        <input type="date" class="form-field-date" name=event_date id="eventDate" aria-label="Event Date" required><br>
         <h2 class="field-label-text">Event Time:</h2>
-        <input type="time" class="form-field-time" id="startTime" aria-label="Event Start Time">
+        <input type="time" class="form-field-time" name="start_time" id="startTime" aria-label="Event Start Time" required>
         <span class="field-label-text">-</span>
-        <input type="time" class="form-field-time" id="endTime" aria-label="Event End Time"><br>
+        <input type="time" class="form-field-time" name="end_time" id="endTime" aria-label="Event End Time" required><br>
         <h2 class="field-label-text">Event Location:</h2>
-        <input type="text" class="form-field-reg" id="location" aria-label="Event Location"><br>
+        <input type="text" class="form-field-reg" name="event_location" id="location" aria-label="Event Location" required><br>
         <button class="field-submit-btn" type="submit">Create Event!</button>
       </form>
     </div>
