@@ -12,6 +12,7 @@ class EventSpotterController {
         $this->input = $input;
         // echo print_r($input);
         session_start();
+        $_SESSION["activePage"] = "homepage";
         // $_SESSION["login_status"]=false;
     }
 
