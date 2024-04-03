@@ -46,30 +46,20 @@
     <div class="basic-page">
         <div class="basic-container events-container">
             <h1 class="page-title">Events</h1> <br>
+            <?php foreach($_SESSION["allEvents"] as $event){ ?>
             <div class="event-item">
                 <div class="event">
-                    <h2>Event #1</h2>
-                    <p class="location">@ 123 Apple Street, Charlottesville VA</p>
-                    <p class="description">February 29th from 8-10pm</p>
-                    <p class="description">Event Description <a href="?command=eventdetails">see more...</a></p>
+                    <h2><?= $event["event_name"]?></h2>
+                    <p class="location">@ <?= $event["event_location"]?> </p>
+                    <p class="description"><?= $event["event_date"]?> from <?= $event["start_time"]?> to
+                        <?= $event["end_time"]?></p>
+                    <p class="description"><?= $event["event_description"]?>
+                        <!-- <a href="?command=eventdetails">see more...</a> -->
+                    </p>
+                    <p class="postedBy">posted by <?= $event["username"]?></p>
                 </div>
             </div>
-            <div class="event-item">
-                <div class="event">
-                    <h2>Event #2</h2>
-                    <p class="location">@ 123 Apple Street, Charlottesville VA</p>
-                    <p class="description">February 29th from 8-10pm</p>
-                    <p class="description">Event Description <a href="?command=eventdetails">see more...</a></p>
-                </div>
-            </div>
-            <div class="event-item">
-                <div class="event">
-                    <h2>Event #3</h2>
-                    <p class="location">@ 123 Apple Street, Charlottesville VA</p>
-                    <p class="description">February 29th from 8-10pm</p>
-                    <p class="description">Event Description <a href="?command=eventdetails">see more...</a></p>
-                </div>
-            </div>
+            <?php }?>
         </div>
     </div>
 

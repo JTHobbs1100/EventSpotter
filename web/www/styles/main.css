@@ -227,6 +227,13 @@ p.slogan {
   color: darkgray;
 }
 
+.event p.postedBy {
+  color: darkgray;
+  font-style: italic;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
 /* Login */
 
 .login-field {

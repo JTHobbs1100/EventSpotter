@@ -62,7 +62,14 @@ https://getbootstrap.com/docs/4.0/components/navbar/
                 featured events
             </h1>
             <div class="featured-events-list">
+                <?php foreach($_SESSION["featuredEvents"] as $event){ ?>
                 <div class="event">
+                    <h2><?= $event["event_name"]?></h2>
+                    <p class="description"><?= $event["event_description"]?>
+                    </p>
+                </div>
+                <?php }?>
+                <!-- <div class="event">
                     <h2>Event #1</h2>
                     <p>Event Description <a href="?command=eventdetails">see more...</a></p>
                 </div>
@@ -73,7 +80,7 @@ https://getbootstrap.com/docs/4.0/components/navbar/
                 <div class="event">
                     <h2>Event #2</h2>
                     <p>Event Description <a href="?command=eventdetails">see more...</a></p>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

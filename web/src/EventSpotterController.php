@@ -78,6 +78,7 @@ class EventSpotterController {
                 $this->logout();
                 break;
             default:
+                $_SESSION["activePage"] = "homepage";
                 $this->showHomePage();
                 break;
         }
@@ -88,11 +89,17 @@ class EventSpotterController {
      */
     public function showHomePage() {
         $dataElement = print_r($this->input, true);
-        
+        $res = $this->db->query("select * from events");
+        $_SESSION["featuredEvents"] = $res;
+        $_SESSION["featuredEvents"] = $this->sortEvents($_SESSION["featuredEvents"]);
+        $_SESSION["featuredEvents"] = array_slice($_SESSION["featuredEvents"], 0, 3); //top 3 events by date/time
         include("/opt/src/templates/homepage.php");
     }
     public function showEvents() {
         $dataElement = print_r($this->input, true);
+        $res = $this->db->query("select * from events");
+        $_SESSION["allEvents"] = $res;
+        $_SESSION["allEvents"] = $this->sortEvents($_SESSION["allEvents"]);
         include("/opt/src/templates/events.php");
     }
     public function showEventDetails() {

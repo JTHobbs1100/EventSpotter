@@ -9,8 +9,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link"
-                        <?php if($_SESSION["activePage"] == "homepage") echo "active";?>
+                <li class="nav-item"><a class="nav-link <?php if($_SESSION["activePage"] == "homepage") echo "active"?>"
                         href="?command=homepage">home</a></li>
                 <li class="nav-item"><a class="nav-link <?php if($_SESSION["activePage"] == "events") echo "active"?>"
                         href="?command=events">events</a></li>
