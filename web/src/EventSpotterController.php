@@ -83,6 +83,7 @@ class EventSpotterController {
      */
     public function showHomePage() {
         $dataElement = print_r($this->input, true);
+        
         include("/opt/src/templates/homepage.php");
     }
     public function showEvents() {
@@ -229,6 +230,8 @@ class EventSpotterController {
             $_SESSION["login_status"] = false;
             unset($_SESSION["username"]);
         }
+        session_destroy();
+        session_start();
 
         header("Location: ?command=homepage");
     }
