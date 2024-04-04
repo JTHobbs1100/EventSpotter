@@ -8,7 +8,7 @@
 
 
 $GLOBALS["isLocal"] = false;
-$SUBMITTER_COMP_ID = "fdu5ff";
+$SUBMITTER_COMP_ID = "fdu5ff"; // SPECIFIC TO JACOB
 
 $URL = "/students/$SUBMITTER_COMP_ID/students/$SUBMITTER_COMP_ID/private/EventSpotter";
 

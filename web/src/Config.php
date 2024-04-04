@@ -21,6 +21,7 @@ class Config {
         "database" => "example"
     ];
 
+    // SPECIFIC TO JACOB, USED FOR SERVER
     public static $db = [
         "host" => "localhost",
         "port" => 5432,
