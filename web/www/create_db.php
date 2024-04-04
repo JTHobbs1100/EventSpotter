@@ -1,11 +1,11 @@
 <?php
 
     // Note that these are for the local Docker container
-    $host = "localhost";
+    $host = "db";
     $port = "5432";
-    $database = "fdu5ff";
-    $user = "fdu5ff";
-    $password = "5CLPE1ga9jf4"; 
+    $database = "example";
+    $user = "localuser";
+    $password = "cs4640LocalUser!"; 
 
     $dbHandle = pg_connect("host=$host port=$port dbname=$database user=$user password=$password");
 
