@@ -15,11 +15,19 @@ class Database {
      * Connects to PostgresSQL
      */
     public function __construct() {
-        $host = Config::$db["host"];
-        $user = Config::$db["user"];
-        $database = Config::$db["database"];
-        $password = Config::$db["pass"];
-        $port = Config::$db["port"];
+        if($GLOBALS["isLocal"]){
+            $host = Config::$LOCALdb["host"];
+            $user = Config::$LOCALdb["user"];
+            $database = Config::$LOCALdb["database"];
+            $password = Config::$LOCALdb["pass"];
+            $port = Config::$LOCALdb["port"];
+        }else{
+            $host = Config::$db["host"];
+            $user = Config::$db["user"];
+            $database = Config::$db["database"];
+            $password = Config::$db["pass"];
+            $port = Config::$db["port"];
+        }
 
         $this->dbConnector = pg_connect("host=$host port=$port dbname=$database user=$user password=$password");
     }

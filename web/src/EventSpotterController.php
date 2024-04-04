@@ -104,7 +104,7 @@ class EventSpotterController {
         $_SESSION["featuredEvents"] = $res;
         $_SESSION["featuredEvents"] = $this->sortEvents($_SESSION["featuredEvents"]);
         $_SESSION["featuredEvents"] = array_slice($_SESSION["featuredEvents"], 0, 3); //top 3 events by date/time
-        include("/opt/src/templates/homepage.php");
+        include("{$GLOBALS["URL"]}/templates/homepage.php");
     }
     // function that returns JSON data
     public function getEventsJSON(){
@@ -116,23 +116,23 @@ class EventSpotterController {
         $dataElement = print_r($this->input, true);
         $_SESSION["allEvents"] = json_decode($this->getEventsJSON(), true);
         $_SESSION["allEvents"] = $this->sortEvents($_SESSION["allEvents"]);
-        include("/opt/src/templates/events.php");
+        include("{$GLOBALS["URL"]}/templates/events.php");
     }
     public function showEventDetails() {
         $dataElement = print_r($this->input, true);
-        include("/opt/src/templates/event-details.php");
+        include("{$GLOBALS["URL"]}/templates/event-details.php");
     }
     public function showCreate() {
         $dataElement = print_r($this->input, true);
-        include("/opt/src/templates/create.php");
+        include("{$GLOBALS["URL"]}/templates/create.php");
     }
     public function showLogin($loginMessage = "") {
         $dataElement = print_r($this->input, true);
-        include("/opt/src/templates/login.php");
+        include("{$GLOBALS["URL"]}/templates/login.php");
     }
     public function showSuccessLogin() {
         $dataElement = print_r($this->input, true);
-        include("/opt/src/templates/successful_login.php");
+        include("{$GLOBALS["URL"]}/templates/successful_login.php");
     }
 
 
@@ -194,7 +194,7 @@ class EventSpotterController {
 
     public function showCreateAccountPage($accountCreationMessage = "") {
         $dataElement = print_r($this->input, true);
-        include("/opt/src/templates/create-account.php");
+        include("{$GLOBALS["URL"]}/templates/create-account.php");
     }
 
     public function createAccount(){
@@ -268,7 +268,7 @@ class EventSpotterController {
         $res = $this->db->query("select * from events where username = $1;", $_SESSION["username"]);
         $_SESSION["myevents"] = $res;
         $_SESSION["myevents"] = $this->sortEvents($_SESSION["myevents"]);
-        include("/opt/src/templates/myevents.php");
+        include("{$GLOBALS["URL"]}/templates/myevents.php");
     }
 
     public function sortEvents($eventArr){

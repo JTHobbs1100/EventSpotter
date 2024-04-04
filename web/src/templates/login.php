@@ -39,7 +39,7 @@
 
 <body>
     <header>
-        <?php include("/opt/src/templates/navbar.php"); ?>
+        <?php include("{$GLOBALS["URL"]}/templates/navbar.php"); ?>
     </header>
 
     <div class="basic-page">

@@ -47,7 +47,7 @@ https://getbootstrap.com/docs/4.0/components/navbar/
 
 <body>
     <header>
-        <?php include("/opt/src/templates/navbar.php"); ?>
+        <?php include("{$GLOBALS["URL"]}/templates/navbar.php"); ?>
     </header>
     <div class="front-page">
         <div class="headline">
