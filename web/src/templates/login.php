@@ -45,7 +45,7 @@
 
     <div class="basic-page">
         <div class="basic-container">
-            <h1 class="page-title">log in</h1> <br>
+            <h1 class="page-title"><a class="page-title2" href="?command=login" style="text-decoration:none;">log in</a></h1> <br>
             <form class="login-form" action="?command=authentication" method="post">
                 <h2 class="field-label-text">username:</h2>
                 <input type="text" class="login-field" name="username" id="user" aria-label="Username" required> <br>
@@ -70,6 +70,32 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
+
+<script>
+        const loginHeader = document.querySelector('.page-title2');
+
+        //using arrow function
+        loginHeader.addEventListener('mouseenter', () => {
+            loginHeader.style.color = 'gold';
+        });
+
+        loginHeader.addEventListener('mouseleave', () => {
+            loginHeader.style.color = 'white';
+        });
+
+        $(".field-submit-btn").hover(
+            function() {
+                let ogColor = $(this).css('color');
+                $(this).data('ogColor', $(this).css('color'));
+                $(this).css("color", "gold");
+            },
+            function() {
+                $(this).css("color", $(this).data('ogColor'));
+            }
+        );
+    </script>
+
+
 </body>
 
 </html>

@@ -25,7 +25,9 @@
     <!-- title of site -->
     <meta property="og:site_name" content="Event Spotter">
 
+
     <title>Event Spotter</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -44,7 +46,7 @@
 
     <div class="basic-page">
         <div class="basic-container">
-            <h1 class="page-title">create account</h1> <br>
+            <h1 class="page-title"><a class="page-title2" href="?command=create_account_page" style="text-decoration:none;">create account</a></h1> <br>
             <form class="login-form" action="?command=create_account" method="post">
                 <h2 class="field-label-text">username:</h2>
                 <input type="text" class="login-field" name="username" id="user" aria-label="Username" required> <br>
@@ -52,7 +54,7 @@
                 <input type="password" class="login-field" name="password" id="pass" aria-label="Password" required>
                 <br>
                 <!-- add if statement for session to see if logged in so we can make it a log out button instead -->
-                <button class=" field-submit-btn" type="submit">create account</button>
+                <button class="field-submit-btn" type="submit">create account</button>
 
 
             </form>
@@ -65,6 +67,30 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const createHeader = document.querySelector('.page-title2');
+
+        //using arrow function
+        createHeader.addEventListener('mouseenter', () => {
+            createHeader.style.color = 'gold';
+        });
+
+        createHeader.addEventListener('mouseleave', () => {
+            createHeader.style.color = 'white';
+        });
+
+        $(".field-submit-btn").hover(
+            function() {
+                let ogColor = $(this).css('color');
+                $(this).data('ogColor', $(this).css('color'));
+                $(this).css("color", "gold");
+            },
+            function() {
+                $(this).css("color", $(this).data('ogColor'));
+            }
+        );
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
