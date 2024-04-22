@@ -48,20 +48,7 @@ https://getbootstrap.com/docs/4.0/components/navbar/
 
 <body>
 
-<script>
-  $(document).ready(function() {
-    $(".event").hover(
-      function() {
-        let ogColor = $(this).css('color');
-        $(this).data('ogColor', $(this).css('color'));  
-        $(this).css("color", "gold");  
-      }, 
-      function() {
-        $(this).css("color", $(this).data('ogColor'));  
-      }
-    );
-  });
-</script>
+
 
     <header>
         <?php include("{$GLOBALS["URL"]}/templates/navbar.php"); ?>
@@ -69,41 +56,68 @@ https://getbootstrap.com/docs/4.0/components/navbar/
     <div class="front-page">
         <div class="headline">
             <h1 class="pretty">Welcome to...</h1>
-            <h1 class="splash">Event
-                Spotter</h1>
+            <h1 class="splash"> <a  style="text-decoration: none;" class="splash" href="?command=homepage">Event
+                    Spotter</a></h1>
             <p class="slogan">find local shows, open mics, arts events, and more!</p>
+            <p class="founders"></p>
         </div>
 
         <div class="featured-events">
             <h1 class="page-title">
-                featured events
+                <a class="page-title" href="?command=events" style="text-decoration: none;"> featured events</a>
             </h1>
             <div class="featured-events-list">
                 <?php foreach ($_SESSION["featuredEvents"] as $event) { ?>
                     <div class="event">
-                        <h2><?= $event["event_name"] ?></h2>
+                        <h2><a  style="text-decoration: none;" class="splash" href="?command=events"><?= $event["event_name"] ?></a></h2>
                         <p class="description"><?= $event["event_description"] ?>
                         </p>
                     </div>
                 <?php } ?>
-                <!-- <div class="event">
-                    <h2>Event #1</h2>
-                    <p>Event Description <a href="?command=eventdetails">see more...</a></p>
-                </div>
-                <div class="event">
-                    <h2>Event #2</h2>
-                    <p>Event Description <a href="?command=eventdetails">see more...</a></p>
-                </div>
-                <div class="event">
-                    <h2>Event #2</h2>
-                    <p>Event Description <a href="?command=eventdetails">see more...</a></p>
-                </div> -->
+             
             </div>
         </div>
     </div>
 
 
+    <script>
+        // $(document).ready(function() {
+        $(".event").hover(
+            function() {
+                let ogColor = $(this).css('color');
+                $(this).data('ogColor', $(this).css('color'));
+                $(this).css("color", "gold");
+            },
+            function() {
+                $(this).css("color", $(this).data('ogColor'));
+            }
+        );
 
+        $(".splash").hover(
+            function() {
+                let ogColor = $(this).css('color');
+                $(this).data('ogColor', $(this).css('color'));
+                $(this).css("color", "gold");
+                $(".founders").html("Founded by Maseel Shah and Jacob Hobbs");
+                $(".founders").css("color", "gold");
+            },
+            function() {
+                $(this).css("color", $(this).data('ogColor'));
+                $(".founders").html("");
+            }
+        );
+
+        $(".page-title").hover(
+            function() {
+                let ogColor = $(this).css('color');
+                $(this).data('ogColor', $(this).css('color'));
+                $(this).css("color", "gold");
+            },
+            function() {
+                $(this).css("color", $(this).data('ogColor'));
+            }
+        );
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
