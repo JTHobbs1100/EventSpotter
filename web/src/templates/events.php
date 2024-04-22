@@ -27,7 +27,9 @@
     <meta property="og:site_name" content="Event Spotter">
 
     <title>Event Spotter</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
+        integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -64,10 +66,25 @@
         });
 
         request.done(function(response) {
-            // console.log(JSON.parse(response).toString().length / n)
-            // console.log(JSON.parse(response).toString());
-            console.log(response)
-            $("#eventsContainer").append(response)
+            // console.log(response);
+            let allEvents = JSON.parse(response);
+            // console.log(allEvents.toString());
+            allEvents.forEach((eventObj) => {
+                // console.log(eventObj)
+                $("#eventsContainer").append(`
+                    <div class="event-item">
+                        <div class="event">
+                            <h2> ${eventObj["event_name"]} </h2>
+                            <p class="location">@ ${eventObj["event_location"]} </p>
+                            <p class="description"> ${eventObj["event_date"]} from ${eventObj["start_time"]} to ${eventObj["end_time"]}</p>
+                            <p class="description"> ${eventObj["event_description"]}
+                            </p>
+                            <p class="postedBy">posted by ${eventObj["username"]}</p>
+                        </div>
+                    </div>
+                    `)
+                })
+            //$("#eventsContainer").append()
         });
 
         request.fail(function(jqXHR, textStatus, errorThrown) {
