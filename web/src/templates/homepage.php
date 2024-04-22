@@ -69,7 +69,7 @@ https://getbootstrap.com/docs/4.0/components/navbar/
             <div class="featured-events-list">
                 <?php foreach ($_SESSION["featuredEvents"] as $event) { ?>
                     <div class="event">
-                        <h2><a  style="text-decoration: none;" class="splash" href="?command=events"><?= $event["event_name"] ?></a></h2>
+                        <h2><a  style="text-decoration: none;" class="eventSub" href="?command=events"><?= $event["event_name"] ?></a></h2>
                         <p class="description"><?= $event["event_description"] ?>
                         </p>
                     </div>
@@ -82,7 +82,7 @@ https://getbootstrap.com/docs/4.0/components/navbar/
 
     <script>
         // $(document).ready(function() {
-        $(".event").hover(
+        $(".eventSub").hover(
             function() {
                 let ogColor = $(this).css('color');
                 $(this).data('ogColor', $(this).css('color'));
