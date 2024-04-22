@@ -114,8 +114,8 @@ class EventSpotterController {
     }
     public function showEvents() {
         $dataElement = print_r($this->input, true);
-        $_SESSION["allEvents"] = json_decode($this->getEventsJSON(), true);
-        $_SESSION["allEvents"] = $this->sortEvents($_SESSION["allEvents"]);
+        // $_SESSION["allEvents"] = json_decode($this->getEventsJSON(), true);
+        // $_SESSION["allEvents"] = $this->sortEvents($_SESSION["allEvents"]);
         include("{$GLOBALS["URL"]}/templates/events.php");
     }
     public function showEventDetails() {

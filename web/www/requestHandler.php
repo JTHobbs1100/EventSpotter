@@ -1,12 +1,4 @@
-<?php
-/**
- * HOSTED AT: https://cs4640.cs.virginia.edu/fdu5ff/EventSpotter/ -->
- * SOURCES: https://getbootstrap.com/docs/4.0/components/navbar/,
- *  https://stackoverflow.com/questions/12090077/javascript-regular-expression-password-validation-having-special-characters, 
- * https://stackoverflow.com/questions/41391862/how-to-access-php-session-variable-in-javascript
- */
-
-
+<?php 
 
 $GLOBALS["isLocal"] = false;
 $GLOBALS["submitter_comp_id"] = "fdu5ff"; // SPECIFIC TO JACOB
@@ -35,7 +27,11 @@ spl_autoload_register(function ($classname) {
     include "{$GLOBALS["URL"]}/$classname.php";
 });
 
+if(isset( $_POST['eventPage'] )) {
+    $EventSpotterController = new EventSpotterController($_GET);
+    $result = $EventSpotterController->getEventsJSON();
+    echo $result;
+    // echo "success";
+}
 
-// Instantiate the controller and pass in the URL (HTTP GET) parameters
-$controller = new EventSpotterController($_GET); 
-$controller->run();
+// echo 

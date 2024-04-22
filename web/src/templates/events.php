@@ -33,11 +33,53 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <link rel="stylesheet" href="styles/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
+        integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
-
-
 <body>
+    <script>
+    function init() {
+
+        // console.log("loaded");
+        // if (localStorage.getItem("board") == false || localStorage.getItem("board") == null) {
+        //     setUpNewGame();
+        //     //console.log("Loaded from local storage");
+        // } else {
+        //     let cat = JSON.parse(localStorage.getItem("json"));
+        //     //console.log("cat",cat);
+        //     createTable(cat);
+        //     stats();
+        //     showHistory();
+        // }
+
+        request = $.ajax({
+            url: "../requestHandler.php",
+            type: "post",
+            data: {
+                eventPage: 0
+            }
+        });
+
+        request.done(function(response) {
+            // console.log(JSON.parse(response).toString().length / n)
+            // console.log(JSON.parse(response).toString());
+            console.log(response)
+            $("#eventsContainer").append(response)
+        });
+
+        request.fail(function(jqXHR, textStatus, errorThrown) {
+            console.error(
+                "The following error occurred: " +
+                textStatus, errorThrown
+            );
+        });
+
+
+    }
+    window.addEventListener("load", init);
+    </script>
 
     <header>
         <?php include("{$GLOBALS["URL"]}/templates/navbar.php"); ?>
@@ -45,8 +87,11 @@
 
     <div class="basic-page">
         <div class="basic-container events-container">
-            <h1 class="page-title">Events</h1> <br>
-            <?php foreach($_SESSION["allEvents"] as $event){ ?>
+            <h1 class="page-title">Events WIP</h1> <br>
+            <div id="eventsContainer">
+
+            </div>
+            <!-- <?php foreach($_SESSION["allEvents"] as $event){ ?>
             <div class="event-item">
                 <div class="event">
                     <h2><?= $event["event_name"]?></h2>
@@ -55,12 +100,12 @@
                         <?= $event["end_time"]?></p>
                     <p class="description"><?= $event["event_description"]?>
                         <!-- <a href="?command=eventdetails">see more...</a> -->
-                    </p>
-                    <p class="postedBy">posted by <?= $event["username"]?></p>
-                </div>
-            </div>
-            <?php }?>
+            </p>
+            <p class="postedBy">posted by <?= $event["username"]?></p>
         </div>
+    </div>
+    <?php }?> -->
+    </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
