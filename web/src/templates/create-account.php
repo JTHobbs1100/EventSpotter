@@ -92,6 +92,10 @@
                 if ($('#user').val().length >= 5) {
                     $('#username-msg').text('');
                 }
+
+                if ($('#user').val().length < 5) {
+                    $('#username-msg').text('Username should be at least 5 characters long');
+                }
             });
 
             $('#pass').on('click', function() {
@@ -106,6 +110,11 @@
                 if ($('#pass').val().length >= 6) {
                     $('#pass-msg').text('');
                     $('#pass-msg2').text('');
+                }
+                if ($('#pass').val().length < 6) {
+                    $('#pass-msg').text('Password must be 6-16 characters, contain an ');
+                    $('#pass-msg2').text('upper and lower case letter, and a number!');
+
                 }
             });
         });
