@@ -174,7 +174,7 @@
 
     <div class="basic-page">
         <div class="basic-container events-container">
-            <h1 class="page-title">Events WIP</h1> <br>
+            <h1 class="page-title">Events</h1> <br>
             <div id="eventsContainer">
                 <!-- this is where events will go! -->
             </div>
