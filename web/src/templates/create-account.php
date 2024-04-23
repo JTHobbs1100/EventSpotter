@@ -51,12 +51,10 @@
                 <br>
                 <h2 class="field-label-text">password:</h2>
                 <input type="password" class="login-field" name="password" id="pass" aria-label="Password" required>
-                <div class="row">
-                    <div class="col-xs-12" style="text-align:center;">
-                        <div id="pass-msg" class="form-text" style="color:red;"></div>
+                <div id="pass-msg" class="form-text" style="color:red;"></div>
+                <div id="pass-msg2" class="form-text" style="color:red;"></div>
 
-                    </div>
-                </div>
+
                 <br>
                 <!-- add if statement for session to see if logged in so we can make it a log out button instead -->
                 <button class="field-submit-btn" type="submit">create account</button>
@@ -68,7 +66,7 @@
         <br>
         <div class="row">
             <div class="col-xs-12" style="text-align:center;">
-                <div id="pass-msg" class="form-text" style="color:red;"></div>
+                <!-- <div id="pass-msg" class="form-text" style="color:red;"></div> -->
 
                 <?= $accountCreationMessage ?>
             </div>
@@ -76,13 +74,20 @@
     </div>
 
     <script>
+
+        //client side input validation for length
+
         $(document).ready(function() {
+
+            // click prompts "error" message that not long enough
+            //DOM manipulation
             $('#user').on('click', function() {
                 if ($('#user').val().length < 5) {
                     $('#username-msg').text('Username should be at least 5 characters long');
                 }
             });
 
+            //error handling while typing
             $('#user').on('keyup', function() {
                 if ($('#user').val().length >= 5) {
                     $('#username-msg').text('');
@@ -91,7 +96,9 @@
 
             $('#pass').on('click', function() {
                 if ($('#pass').val().length < 6) {
-                    $('#pass-msg').text('Password must be 6-16 characters and contain an upper and lower case letter, and a number!');
+                    $('#pass-msg').text('Password must be 6-16 characters, contain an ');
+                    $('#pass-msg2').text('upper and lower case letter, and a number!');
+
                 }
             });
 

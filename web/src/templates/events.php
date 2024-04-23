@@ -174,7 +174,7 @@
 
     <div class="basic-page">
         <div class="basic-container events-container">
-            <h1 class="page-title">Events</h1> <br>
+            <h1 class="page-title"><a class="page-title2" href="?command=events" style="text-decoration:none;">Events</a></h1> <br>
             <div id="eventsContainer">
                 <!-- this is where events will go! -->
             </div>
@@ -192,6 +192,31 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
+
+<script>
+
+    //color change is DOM manipulation
+        document.querySelector('.field-submit-btn').addEventListener('mouseenter', function() {
+            this.style.color = 'gold';
+        });
+
+        document.querySelector('.field-submit-btn').addEventListener('mouseleave', function() {
+            this.style.color = 'white';
+        });
+
+
+        const eventsHeader = document.querySelector('.page-title2');
+
+        //using arrow function
+        eventsHeader.addEventListener('mouseenter', () => {
+            eventsHeader.style.color = 'gold'; 
+        });
+
+        eventsHeader.addEventListener('mouseleave', () => {
+            eventsHeader.style.color = 'white'; 
+        });
+    </script>
+
 </body>
 
 </html>

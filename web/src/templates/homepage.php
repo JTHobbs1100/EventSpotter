@@ -56,7 +56,7 @@ https://getbootstrap.com/docs/4.0/components/navbar/
     <div class="front-page">
         <div class="headline">
             <h1 class="pretty">Welcome to...</h1>
-            <h1 class="splash"> <a  style="text-decoration: none;" class="splash" href="?command=homepage">Event
+            <h1 class="splash"> <a style="text-decoration: none;" class="splash" href="?command=homepage">Event
                     Spotter</a></h1>
             <p class="slogan">find local shows, open mics, arts events, and more!</p>
             <p class="founders"></p>
@@ -69,12 +69,12 @@ https://getbootstrap.com/docs/4.0/components/navbar/
             <div class="featured-events-list">
                 <?php foreach ($_SESSION["featuredEvents"] as $event) { ?>
                     <div class="event">
-                        <h2><a  style="text-decoration: none;" class="eventSub" href="?command=events"><?= $event["event_name"] ?></a></h2>
+                        <h2><a style="text-decoration: none;" class="eventSub" href="?command=events"><?= $event["event_name"] ?></a></h2>
                         <p class="description"><?= $event["event_description"] ?>
                         </p>
                     </div>
                 <?php } ?>
-             
+
             </div>
         </div>
     </div>
@@ -82,6 +82,8 @@ https://getbootstrap.com/docs/4.0/components/navbar/
 
     <script>
         // $(document).ready(function() {
+
+        //dom manipulation
         $(".eventSub").hover(
             function() {
                 let ogColor = $(this).css('color');
@@ -100,9 +102,13 @@ https://getbootstrap.com/docs/4.0/components/navbar/
                 $(this).css("color", "gold");
                 $(".founders").html("Founded by Maseel Shah and Jacob Hobbs");
                 $(".founders").css("color", "gold");
+
+                $(".pretty").data('ogColor', $(this).css('color'));
+                $(".pretty").css("color", "gold");
             },
             function() {
                 $(this).css("color", $(this).data('ogColor'));
+                $(".pretty").css("color", $(this).data('ogColor'));
                 $(".founders").html("");
             }
         );
@@ -115,6 +121,26 @@ https://getbootstrap.com/docs/4.0/components/navbar/
             },
             function() {
                 $(this).css("color", $(this).data('ogColor'));
+            }
+        );
+
+        $(".pretty").hover(
+            function() {
+                let ogColor = $(this).css('color');
+                $(this).data('ogColor', $(this).css('color'));
+                $(this).css("color", "gold");
+
+                $(".founders").html("Founded by Maseel Shah and Jacob Hobbs");
+                $(".founders").css("color", "gold");
+
+                $(".splash").data('ogColor', $(this).css('color'));
+                $(".splash").css("color", "gold");
+            },
+            function() {
+                $(this).css("color", $(this).data('ogColor'));
+                $(".splash").css("color", $(this).data('ogColor'));
+                $(".founders").html("");
+
             }
         );
     </script>
