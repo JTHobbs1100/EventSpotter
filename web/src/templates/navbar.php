@@ -58,4 +58,15 @@
             $(this).css("color", $(this).data('ogColor'));
         }
     );
+
+    $(".nav-link").hover(
+        function() {
+            let ogColor = $(this).css('color');
+            $(this).data('ogColor', $(this).css('color'));
+            $(this).css("color", "gold");
+        },
+        function() {
+            $(this).css("color", $(this).data('ogColor'));
+        }
+    );
 </script>
