@@ -62,7 +62,7 @@
         // }
 
         request = $.ajax({
-            url: "../requestHandler.php",
+            url: "requestHandler.php",
             type: "post",
             data: {
                 eventPage: 0
@@ -196,13 +196,13 @@
 <script>
 
     //color change is DOM manipulation
-        document.querySelector('.field-submit-btn').addEventListener('mouseenter', function() {
-            this.style.color = 'gold';
-        });
+        // document.querySelector('.field-submit-btn').addEventListener('mouseenter', function() {
+        //     this.style.color = 'gold';
+        // });
 
-        document.querySelector('.field-submit-btn').addEventListener('mouseleave', function() {
-            this.style.color = 'white';
-        });
+        // document.querySelector('.field-submit-btn').addEventListener('mouseleave', function() {
+        //     this.style.color = 'white';
+        // });
 
 
         const eventsHeader = document.querySelector('.page-title2');
