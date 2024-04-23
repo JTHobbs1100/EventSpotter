@@ -43,10 +43,12 @@
 
 <body>
     <script>
-        var currentPage = -1;
-        var numEvents = -1;
-        var MAX_EVENTS_PER_PAGE = 5;
-        var prettyEvents = [];
+        var eventsData = {
+            currentPage: -1,
+            numEvents: -1,
+            MAX_EVENTS_PER_PAGE: 5,
+            prettyEvents: []
+        }
     function init() {
 
         // console.log("loaded");
@@ -75,7 +77,7 @@
             // console.log(allEvents.toString());
             allEvents.forEach((eventObj) => {
                 // console.log(eventObj)
-                prettyEvents.push(`
+                eventsData.prettyEvents.push(`
                     <div class="event-item">
                         <div class="event">
                             <h2> ${eventObj["event_name"]} </h2>
@@ -88,17 +90,17 @@
                     </div>
                     `)
                 })
-            // prettyEvents.forEach((prettyEvent) => {
+            // eventsData.prettyEvents.forEach((prettyEvent) => {
             //     $("#eventsContainer").append(prettyEvent);
             // })
     
             //$("#eventsContainer").append()
-            currentPage = 0;
-            numEvents = prettyEvents.length;
-            if(numEvents>MAX_EVENTS_PER_PAGE){
+            eventsData.currentPage = 0;
+            eventsData.numEvents = eventsData.prettyEvents.length;
+            if(eventsData.numEvents>eventsData.MAX_EVENTS_PER_PAGE){
                 $("#nextEvents").removeAttr('disabled');
             }
-            if(currentPage < 0){
+            if(eventsData.currentPage < 0){
                 console.error("Bad Page Load")
             }
             showCurrentPage();
@@ -122,21 +124,21 @@
 
     function showCurrentPage() {
         $("#eventsContainer").empty();
-        for(let i = currentPage*MAX_EVENTS_PER_PAGE; i<= (currentPage+1)*MAX_EVENTS_PER_PAGE - 1 && i<numEvents; i++){
-            $("#eventsContainer").append(prettyEvents[i]);
+        for(let i = eventsData.currentPage*eventsData.MAX_EVENTS_PER_PAGE; i<= (eventsData.currentPage+1)*eventsData.MAX_EVENTS_PER_PAGE - 1 && i<eventsData.numEvents; i++){
+            $("#eventsContainer").append(eventsData.prettyEvents[i]);
         }
     }
 
     function nextPage(){
-        let isNextPage = ((currentPage + 1) * MAX_EVENTS_PER_PAGE) < numEvents;
+        let isNextPage = ((eventsData.currentPage + 1) * eventsData.MAX_EVENTS_PER_PAGE) < eventsData.numEvents;
         if(isNextPage){
-            currentPage++; 
-            // console.log("current page: ", currentPage);
-            isNextPage = ((currentPage + 1) * MAX_EVENTS_PER_PAGE) < numEvents;
+            eventsData.currentPage++; 
+            // console.log("current page: ", eventsData.currentPage);
+            isNextPage = ((eventsData.currentPage + 1) * eventsData.MAX_EVENTS_PER_PAGE) < eventsData.numEvents;
             if(!isNextPage){
                 $("#nextEvents").prop("disabled", true);
             }
-            let isPrevPage = currentPage>0;
+            let isPrevPage = eventsData.currentPage>0;
             if(isPrevPage){
                 $("#prevEvents").removeAttr('disabled');
             }
@@ -147,15 +149,15 @@
     }
 
     function prevPage(){
-        let isPrevPage = currentPage>0;
+        let isPrevPage = eventsData.currentPage>0;
         if(isPrevPage){
-            currentPage--; 
-            // console.log("current page: ", currentPage);
-            isPrevPage = currentPage>0;
+            eventsData.currentPage--; 
+            // console.log("current page: ", eventsData.currentPage);
+            isPrevPage = eventsData.currentPage>0;
             if(!isPrevPage){
                 $("#prevEvents").prop("disabled", true);
             }
-            let isNextPage = ((currentPage + 1) * MAX_EVENTS_PER_PAGE) < numEvents;
+            let isNextPage = ((eventsData.currentPage + 1) * eventsData.MAX_EVENTS_PER_PAGE) < eventsData.numEvents;
             if(isNextPage){
                 $("#nextEvents").removeAttr('disabled');
             }
