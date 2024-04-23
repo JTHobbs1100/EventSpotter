@@ -41,6 +41,18 @@
         <?php include("{$GLOBALS["URL"]}/templates/navbar.php"); ?>
     </header>
 
+    <script>
+        function showDelete(id){
+            $(`#initial-${id}`).hide();
+            $(`#confirm-${id}`).show();
+            $(`#confirm-${id}`).on( "mouseenter", function() {}) .on( "mouseleave", function() {
+                $(`#confirm-${id}`).hide();
+                $(`#initial-${id}`).show();
+            } );
+        }
+        
+    </script>
+
     <div class="basic-page">
         <div class="basic-container events-container">
             <h1 class="page-title"><a class="page-title2" href="?command=myevents" style="text-decoration:none;">My Events</a></h1> <br>
@@ -54,13 +66,15 @@
                         <p class="description"><?= $event["event_description"] ?>
                             <!-- <a href="?command=eventdetails">see more...</a> -->
                         </p>
+                        <button onclick="showDelete(<?= $event["event_id"] ?>)" class="btn btn-outline-danger" id="initial-<?= $event["event_id"] ?>">Delete?</button>
                         <form action="?command=delete_event" method="POST">
                             <input type="hidden" name="event_id" value="<?= $event["event_id"] ?>">
-                            <button type="submit" name="delete_event" class="btn btn-danger">Delete Event</button>
+                            <button type="submit" name="delete_event" class="btn btn-danger" id="confirm-<?= $event["event_id"] ?>" style="display: none">DELETE EVENT</button>
                         </form>
                     </div>
                 </div>
-            <?php } //print_r($_SESSION["myevents"])
+            <?php 
+        } //print_r($_SESSION["myevents"])
             ?>
         </div>
     </div>

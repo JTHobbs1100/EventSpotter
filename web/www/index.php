@@ -3,7 +3,9 @@
  * HOSTED AT: https://cs4640.cs.virginia.edu/fdu5ff/EventSpotter/ -->
  * SOURCES: https://getbootstrap.com/docs/4.0/components/navbar/,
  *  https://stackoverflow.com/questions/12090077/javascript-regular-expression-password-validation-having-special-characters, 
- * https://stackoverflow.com/questions/41391862/how-to-access-php-session-variable-in-javascript
+ * https://stackoverflow.com/questions/41391862/how-to-access-php-session-variable-in-javascript, 
+ * https://getbootstrap.com/docs/5.0/components/toasts/,
+ * https://api.jquery.com/mouseleave/#on-
  */
 
 
