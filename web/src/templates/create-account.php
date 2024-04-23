@@ -105,6 +105,7 @@
             $('#pass').on('keyup', function() {
                 if ($('#pass').val().length >= 6) {
                     $('#pass-msg').text('');
+                    $('#pass-msg2').text('');
                 }
             });
         });
