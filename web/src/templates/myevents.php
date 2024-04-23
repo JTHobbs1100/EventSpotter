@@ -69,7 +69,7 @@
                         <button onclick="showDelete(<?= $event["event_id"] ?>)" class="btn btn-outline-danger" id="initial-<?= $event["event_id"] ?>">Delete?</button>
                         <form action="?command=delete_event" method="POST">
                             <input type="hidden" name="event_id" value="<?= $event["event_id"] ?>">
-                            <button type="submit" name="delete_event" class="btn btn-danger" id="confirm-<?= $event["event_id"] ?>" style="display: none">DELETE EVENT</button>
+                            <button type="submit" name="delete_event" class="btn btn-danger" id="confirm-<?= $event["event_id"] ?>" style="display: none">CLICK AGAIN TO CONFIRM</button>
                         </form>
                     </div>
                 </div>
