@@ -30,8 +30,17 @@ spl_autoload_register(function ($classname) {
 if(isset( $_POST['eventPage'] )) {
     $EventSpotterController = new EventSpotterController($_GET);
     $result = $EventSpotterController->getEventsJSON();
-    echo $result;
+    $result = sortEvents(json_decode($result), true);
+    echo json_encode($result);
     // echo "success";
 }
 
-// echo 
+// echo
+
+function sortEvents($eventArr){
+        
+    array_multisort(array_column($eventArr, 'event_date'), SORT_ASC, array_column($eventArr, 'start_time'), SORT_ASC, array_column($eventArr, 'end_time'), SORT_ASC,  $eventArr);
+    
+    return $eventArr;
+    
+}

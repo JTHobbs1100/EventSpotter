@@ -103,6 +103,20 @@ input:focus-visible {
   margin-top: 10pt
 }
 
+.field-submit-btn:disabled {
+  background-color: rgb(58, 1, 114);
+  border-radius: 5pt;
+  border-style: solid;
+  border-color: darkgray;
+  border-width: 2pt;
+  width: fit-content;
+  padding: 5pt;
+  color: grey;
+  font-family: 'Arial Black';
+  font-size: 20px;
+  margin-top: 10pt
+}
+
 /* Nav */
 
 .navbar-collapse {

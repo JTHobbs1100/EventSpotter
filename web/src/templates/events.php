@@ -43,6 +43,10 @@
 
 <body>
     <script>
+        var currentPage = -1;
+        var numEvents = -1;
+        var MAX_EVENTS_PER_PAGE = 5;
+        var prettyEvents = [];
     function init() {
 
         // console.log("loaded");
@@ -71,7 +75,7 @@
             // console.log(allEvents.toString());
             allEvents.forEach((eventObj) => {
                 // console.log(eventObj)
-                $("#eventsContainer").append(`
+                prettyEvents.push(`
                     <div class="event-item">
                         <div class="event">
                             <h2> ${eventObj["event_name"]} </h2>
@@ -84,7 +88,20 @@
                     </div>
                     `)
                 })
+            // prettyEvents.forEach((prettyEvent) => {
+            //     $("#eventsContainer").append(prettyEvent);
+            // })
+    
             //$("#eventsContainer").append()
+            currentPage = 0;
+            numEvents = prettyEvents.length;
+            if(numEvents>MAX_EVENTS_PER_PAGE){
+                $("#nextEvents").removeAttr('disabled');
+            }
+            if(currentPage < 0){
+                console.error("Bad Page Load")
+            }
+            showCurrentPage();
         });
 
         request.fail(function(jqXHR, textStatus, errorThrown) {
@@ -94,9 +111,61 @@
             );
         });
 
+        
+
 
     }
+
     window.addEventListener("load", init);
+
+    // currentPage.addEventListener("change", showCurrentPage)
+
+    function showCurrentPage() {
+        $("#eventsContainer").empty();
+        for(let i = currentPage*MAX_EVENTS_PER_PAGE; i<= (currentPage+1)*MAX_EVENTS_PER_PAGE - 1 && i<numEvents; i++){
+            $("#eventsContainer").append(prettyEvents[i]);
+        }
+    }
+
+    function nextPage(){
+        let isNextPage = ((currentPage + 1) * MAX_EVENTS_PER_PAGE) < numEvents;
+        if(isNextPage){
+            currentPage++; 
+            // console.log("current page: ", currentPage);
+            isNextPage = ((currentPage + 1) * MAX_EVENTS_PER_PAGE) < numEvents;
+            if(!isNextPage){
+                $("#nextEvents").prop("disabled", true);
+            }
+            let isPrevPage = currentPage>0;
+            if(isPrevPage){
+                $("#prevEvents").removeAttr('disabled');
+            }
+            showCurrentPage();
+        }else{
+            console.log("bad next page call");
+        }
+    }
+
+    function prevPage(){
+        let isPrevPage = currentPage>0;
+        if(isPrevPage){
+            currentPage--; 
+            // console.log("current page: ", currentPage);
+            isPrevPage = currentPage>0;
+            if(!isPrevPage){
+                $("#prevEvents").prop("disabled", true);
+            }
+            let isNextPage = ((currentPage + 1) * MAX_EVENTS_PER_PAGE) < numEvents;
+            if(isNextPage){
+                $("#nextEvents").removeAttr('disabled');
+            }
+            showCurrentPage();
+        }else{
+            console.log("bad prev page call");
+        }
+    }
+
+
     </script>
 
     <header>
@@ -107,23 +176,17 @@
         <div class="basic-container events-container">
             <h1 class="page-title">Events WIP</h1> <br>
             <div id="eventsContainer">
-
+                <!-- this is where events will go! -->
             </div>
-            <!-- <?php foreach($_SESSION["allEvents"] as $event){ ?>
-            <div class="event-item">
-                <div class="event">
-                    <h2><?= $event["event_name"]?></h2>
-                    <p class="location">@ <?= $event["event_location"]?> </p>
-                    <p class="description"><?= $event["event_date"]?> from <?= $event["start_time"]?> to
-                        <?= $event["end_time"]?></p>
-                    <p class="description"><?= $event["event_description"]?>
-                        <!-- <a href="?command=eventdetails">see more...</a> -->
-            </p>
-            <p class="postedBy">posted by <?= $event["username"]?></p>
+            <div class="row mb-2">
+            <div class="col-xs-12">
+                <div class="row justify-content-center">
+                    <button onClick="prevPage()" class="field-submit-btn mx-1" style="width:auto" id = "prevEvents" disabled> ← prev </button>
+                    <button onClick="nextPage()" class="field-submit-btn mx-1" style="width:auto" id = "nextEvents" disabled> next → </button>
+                </div>
+            </div>
         </div>
-    </div>
-    <?php }?> -->
-    </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
