@@ -1,6 +1,6 @@
-# Event Spotter
+# Event Spotter  🪩
 
-## About 🕺 🗓️ 🪩
+## About 🎤 🗓️ 🕺
 
 *Event Spotter* is a website created to help users find and share information about niche local events ranging from concerts to other local live shows!
 
